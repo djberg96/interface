@@ -1,25 +1,25 @@
 require 'rubygems'
 
-Gem::Specification.new do |gem|
-   gem.name      = 'interface'
-   gem.version   = '1.0.2'
-   gem.author    = 'Daniel J. Berger'
-   gem.license   = 'Artistic 2.0'
-   gem.email     = 'djberg96@gmail.com'
-   gem.homepage  = 'http://www.rubyforge.org/projects/shards'
-   gem.summary   = 'Java style interfaces for Ruby'
-   gem.test_file = 'test/test_interface.rb'
-   gem.has_rdoc  = true
-   gem.files     = Dir['**/*'].reject{ |f| f.include?('CVS') }
+Gem::Specification.new do |spec|
+  spec.name      = 'interface'
+  spec.version   = '1.0.3'
+  spec.author    = 'Daniel J. Berger'
+  spec.license   = 'Artistic 2.0'
+  spec.email     = 'djberg96@gmail.com'
+  spec.homepage  = 'http://www.rubyforge.org/projects/shards'
+  spec.summary   = 'Java style interfaces for Ruby'
+  spec.test_file = 'test/test_interface.rb'
+  spec.has_rdoc  = true
+  spec.files     = Dir['**/*'].reject{ |f| f.include?('git') }
 
-   gem.extra_rdoc_files  = ['README', 'CHANGES', 'MANIFEST']
-   gem.rubyforge_project = 'shards'
+  spec.extra_rdoc_files  = ['README', 'CHANGES', 'MANIFEST']
+  spec.rubyforge_project = 'shards'
 
-   gem.add_development_dependency('test-unit', '>= 2.0.3')
+  spec.add_development_dependency('test-unit', '>= 2.0.3')
 
-   gem.description = <<-EOF
-      The interface library implements Java style interfaces for Ruby.
-      It lets you define a set a methods that must be defined in the
-      including class or module, or an error is raised.
-   EOF
+  spec.description = <<-EOF
+    The interface library implements Java style interfaces for Ruby.
+    It lets you define a set a methods that must be defined in the
+    including class or module, or an error is raised.
+  EOF
 end
