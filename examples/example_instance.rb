@@ -2,18 +2,18 @@
 # example_instance.rb
 #
 # Sample program to demonstrate extending an interface to an instance
-# of a class. You can run this program via the 'rake example_instance'
+# of a class. You can run this program via the 'rake example:instance'
 # task. Modify as you see fit.
 #######################################################################
 require 'interface'
 
 MyInterface = interface{
-   required_methods :foo, :bar
+  required_methods :foo, :bar
 }
 
 class Foo
-   def foo; end
-   def bar; end
+  def foo; end
+  def bar; end
 end
 
 class Bar
@@ -26,5 +26,5 @@ b = Bar.new
 
 # This will blow up
 class << b
-   include MyInterface
+  include MyInterface
 end
