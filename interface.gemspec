@@ -6,16 +6,15 @@ Gem::Specification.new do |spec|
   spec.author    = 'Daniel J. Berger'
   spec.license   = 'Artistic 2.0'
   spec.email     = 'djberg96@gmail.com'
-  spec.homepage  = 'http://www.rubyforge.org/projects/shards'
+  spec.homepage  = 'https://github.com/djberg96/interface'
   spec.summary   = 'Java style interfaces for Ruby'
   spec.test_file = 'test/test_interface.rb'
-  spec.has_rdoc  = true
   spec.files     = Dir['**/*'].reject{ |f| f.include?('git') }
 
   spec.extra_rdoc_files  = ['README', 'CHANGES', 'MANIFEST']
-  spec.rubyforge_project = 'shards'
 
-  spec.add_development_dependency('test-unit', '>= 2.0.3')
+  spec.add_development_dependency('test-unit')
+  spec.add_development_dependency('rake')
 
   spec.description = <<-EOF
     The interface library implements Java style interfaces for Ruby.
