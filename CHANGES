@@ -1,3 +1,6 @@
+== 1.0.3 - 12-Oct-2014
+* Rakefile, gemspec and README updates.
+
 == 1.0.2 - 7-Oct-2009
 * Fixed packaging bug in the gemspec, and made some other minor changes.
 * Added the 'gem' rake task.
