@@ -5,7 +5,7 @@
 #
 module Interface
   # The version of the interface library.
-  Interface::VERSION = '1.0.3'
+  Interface::VERSION = '1.0.4'
    
   # Raised if a class or instance does not meet the interface requirements.
   class MethodMissing < RuntimeError; end
