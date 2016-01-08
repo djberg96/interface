@@ -28,18 +28,18 @@
   end
    
 == General Notes
-  Subinterfaces work as well.  See the test_sub.rb file under the 'test'
+  Subinterfaces work as well. See the test_sub.rb file under the 'test'
   directory for a sample.
 
 == Developer's Notes
   A discussion on IRC with Mauricio Fernandez got us talking about traits.
-  During that discussion I remembered a blog entry by David Naseby.  I 
+  During that discussion I remembered a blog entry by David Naseby. I 
   revisited his blog entry and took a closer look:
 
   http://ruby-naseby.blogspot.com/2008/11/traits-in-ruby.html
 
   Keep in mind that I also happened to be thinking about Java at the moment
-  because of a recent job switch that involved coding in Java.  I was also
+  because of a recent job switch that involved coding in Java. I was also
   trying to figure out what the purpose of interfaces were.
 
   As I read the first page of David Naseby's article I realized that,
@@ -59,7 +59,7 @@
   by Mauricio Fernandez through a series of discussions on IRC.
 	
 == Copyright
-  (C) 2004-2014 Daniel J. Berger
+  (C) 2004-2016 Daniel J. Berger
   All rights reserved.
 	
 == Warranty
