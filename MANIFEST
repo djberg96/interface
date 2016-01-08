@@ -3,6 +3,7 @@
 * README
 * Rakefile
 * interface.gemspec
+* certs/djberg96_pub.pem
 * examples/example_instance.rb
 * examples/example_interface.rb
 * examples/example_sub.rb
