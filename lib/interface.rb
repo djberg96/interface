@@ -34,7 +34,6 @@ module Interface
     # Iterate over the methods, minus the unrequired methods, and raise
     # an error if the method has not been defined.
     (ids - @unreq).uniq.each do |id|
-      id = id.to_s if RUBY_VERSION.to_f < 1.9
       unless mod.instance_methods(true).include?(id)
         raise Interface::MethodMissing, id
       end
