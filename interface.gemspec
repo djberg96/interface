@@ -4,7 +4,7 @@ Gem::Specification.new do |spec|
   spec.name       = 'interface'
   spec.version    = '1.0.5'
   spec.author     = 'Daniel J. Berger'
-  spec.license    = 'Artistic 2.0'
+  spec.license    = 'Artistic-2.0'
   spec.email      = 'djberg96@gmail.com'
   spec.homepage   = 'http://github.com/djberg96/interface'
   spec.summary    = 'Java style interfaces for Ruby'
