@@ -2,7 +2,7 @@ require 'rubygems'
 
 Gem::Specification.new do |spec|
   spec.name       = 'interface'
-  spec.version    = '1.0.4'
+  spec.version    = '1.0.5'
   spec.author     = 'Daniel J. Berger'
   spec.license    = 'Artistic 2.0'
   spec.email      = 'djberg96@gmail.com'
@@ -16,6 +16,15 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency('test-unit')
   spec.add_development_dependency('rake')
+
+  spec.metadata = {
+    'homepage_uri'      => 'https://github.com/djberg96/interface',
+    'bug_tracker_uri'   => 'https://github.com/djberg96/interface/issues',
+    'changelog_uri'     => 'https://github.com/djberg96/interface/blob/master/CHANGES',
+    'documentation_uri' => 'https://github.com/djberg96/interface/wiki',
+    'source_code_uri'   => 'https://github.com/djberg96/interface',
+    'wiki_uri'          => 'https://github.com/djberg96/interface/wiki'
+  }
 
   spec.description = <<-EOF
     The interface library implements Java style interfaces for Ruby.
