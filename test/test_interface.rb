@@ -40,7 +40,8 @@ class TC_Interface < Test::Unit::TestCase
   end
 
   def test_version
-    assert_equal('1.0.4', Interface::VERSION)
+    assert_equal('1.0.5', Interface::VERSION)
+    assert_true(Interface::VERSION.frozen?)
   end
 
   def test_interface_requirements_not_met
