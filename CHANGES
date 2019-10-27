@@ -1,3 +1,10 @@
+== 1.0.5 - 26-Oct-2019
+* Now assumes Ruby 2.
+* Updated cert.
+* Fixed missing hyphen in license name.
+* Added metadata to the gemspec.
+* The VERSION constant is now frozen.
+
 == 1.0.4 - 8-Jan-2016
 * This gem is now signed.
 * The gem related tasks in the Rakefile now assume Rubygems 2.x.
