@@ -1,6 +1,6 @@
-* CHANGES
-* MANIFEST
-* README
+* CHANGES.md
+* MANIFEST.md
+* README.md
 * Rakefile
 * interface.gemspec
 * certs/djberg96_pub.pem
