@@ -1,7 +1,6 @@
 ## Description
-This module provides Java style interfaces for Ruby, including a fairly
-similar syntax.  I don't necessarily believe in interfaces, but I wanted to
-put it out there as proof that it could be done.
+This module provides Java style interfaces for Ruby, including a somewhat
+similar syntax. This is largely a proof of concept library.
 
 ## Installation
 `gem install interface`
