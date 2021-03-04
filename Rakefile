@@ -2,7 +2,7 @@ require 'rake'
 require 'rake/clean'
 require 'rake/testtask'
 
-CLEAN.include("**/*.gem", "**/*.rbc")
+CLEAN.include("**/*.gem", "**/*.rbc", "**/*.lock")
 
 namespace :gem do
   desc "Create the interface gem"
@@ -10,7 +10,7 @@ namespace :gem do
     require 'rubygems/package'
     spec = eval(IO.read('interface.gemspec'))
     spec.signing_key = File.join(Dir.home, '.ssh', 'gem-private_key.pem')
-    Gem::Package.build(spec, true)
+    Gem::Package.build(spec)
   end
 
   desc "Install the interface gem"
