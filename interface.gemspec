@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.metadata = {
     'homepage_uri'      => 'https://github.com/djberg96/interface',
     'bug_tracker_uri'   => 'https://github.com/djberg96/interface/issues',
-    'changelog_uri'     => 'https://github.com/djberg96/interface/blob/main/CHANGES',
+    'changelog_uri'     => 'https://github.com/djberg96/interface/blob/main/CHANGES.md',
     'documentation_uri' => 'https://github.com/djberg96/interface/wiki',
     'source_code_uri'   => 'https://github.com/djberg96/interface',
     'wiki_uri'          => 'https://github.com/djberg96/interface/wiki'
