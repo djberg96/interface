@@ -12,8 +12,8 @@ Gem::Specification.new do |spec|
   spec.files      = Dir['**/*'].reject{ |f| f.include?('git') }
   spec.cert_chain = Dir['certs/*']
 
-  spec.add_development_dependency('test-unit')
   spec.add_development_dependency('rake')
+  spec.add_development_dependency('test-unit', '~> 3.4')
 
   spec.metadata = {
     'homepage_uri'      => 'https://github.com/djberg96/interface',
