@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.email      = 'djberg96@gmail.com'
   spec.homepage   = 'http://github.com/djberg96/interface'
   spec.summary    = 'Java style interfaces for Ruby'
-  spec.test_file  = 'test/test_interface.rb'
+  spec.test_file  = 'spec/interface_spec.rb'
   spec.files      = Dir['**/*'].reject{ |f| f.include?('git') }
   spec.cert_chain = Dir['certs/*']
 
