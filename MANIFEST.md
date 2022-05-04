@@ -9,4 +9,4 @@
 * examples/example_sub.rb
 * examples/example_unrequire.rb
 * lib/interface.rb
-* test/test_interface.rb
+* spec/interface_spec.rb

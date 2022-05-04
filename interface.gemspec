@@ -2,7 +2,7 @@ require 'rubygems'
 
 Gem::Specification.new do |spec|
   spec.name       = 'interface'
-  spec.version    = '1.0.5'
+  spec.version    = '1.1.0'
   spec.author     = 'Daniel J. Berger'
   spec.license    = 'Artistic-2.0'
   spec.email      = 'djberg96@gmail.com'
@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.cert_chain = Dir['certs/*']
 
   spec.add_development_dependency('rake')
-  spec.add_development_dependency('test-unit', '~> 3.4')
+  spec.add_development_dependency('rspec', '~> 3.9')
 
   spec.metadata = {
     'homepage_uri'      => 'https://github.com/djberg96/interface',
