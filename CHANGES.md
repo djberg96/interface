@@ -1,4 +1,6 @@
 ## 1.1.0 - 4-May-2022
+* Switch from test-unit to rspec.
+
 ## 1.0.5 - 26-Oct-2019
 * Now assumes Ruby 2.
 * Updated cert.
