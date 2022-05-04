@@ -1,6 +1,6 @@
 require 'rake'
 require 'rake/clean'
-require 'rake/testtask'
+require 'rspec/core/rake_task'
 
 CLEAN.include("**/*.gem", "**/*.rbc", "**/*.lock")
 
@@ -42,9 +42,7 @@ namespace :example do
   end
 end
 
-Rake::TestTask.new do |t|
-  t.verbose = true
-  t.warning = true
-end
+desc "Run the test suite"
+RSpec::Core::RakeTask.new(:spec)
 
-task :default => :test
+task :default => :spec
