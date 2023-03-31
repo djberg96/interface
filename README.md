@@ -1,3 +1,5 @@
+[![Ruby](https://github.com/djberg96/interface/actions/workflows/ruby.yml/badge.svg)](https://github.com/djberg96/interface/actions/workflows/ruby.yml)
+
 ## Description
 This module provides Java style interfaces for Ruby, including a somewhat
 similar syntax. This is largely a proof of concept library.
@@ -63,7 +65,7 @@ The Crystal programming language, which has syntax very similar to Ruby's,
 effectively implements interfaces via the `abstract` keyword.
 	
 ## Copyright
-(C) 2004-2021 Daniel J. Berger
+(C) 2004-2023 Daniel J. Berger
 All rights reserved.
 	
 ## Warranty
