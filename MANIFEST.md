@@ -1,4 +1,5 @@
 * CHANGES.md
+* LICENSE
 * MANIFEST.md
 * README.md
 * Rakefile
