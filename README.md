@@ -7,6 +7,9 @@ similar syntax. This is largely a proof of concept library.
 ## Installation
 `gem install interface`
 
+## Adding the trusted cert
+`gem cert --add <(curl -Ls https://raw.githubusercontent.com/djberg96/interface/main/certs/djberg96_pub.pem)`
+
 ## Synopsis
 ```ruby
 require 'interface'
