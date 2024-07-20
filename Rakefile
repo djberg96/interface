@@ -45,4 +45,9 @@ end
 desc "Run the test suite"
 RSpec::Core::RakeTask.new(:spec)
 
+# Clean up afterwards
+Rake::Task[:spec].enhance do
+  Rake::Task[:clean].invoke
+end
+
 task :default => :spec
