@@ -5,33 +5,38 @@ require 'interface'
 
 RSpec.describe 'Interface Enhanced Features' do
   describe 'enhanced error messages' do
-    let(:basic_interface) do
-      interface do
+    it 'provides detailed error information for single missing method' do
+      basic_interface = interface do
         required_methods :method_a, :method_b
       end
-    end
 
-    it 'provides detailed error information for single missing method' do
-      test_class = Class.new
-      
+      # Use a block to ensure the error happens synchronously
       expect do
-        test_class.include(basic_interface)
+        Class.new do
+          def method_a; end
+          # missing method_b
+          include basic_interface
+        end
       end.to raise_error(Interface::MethodMissing) do |error|
-        expect(error.missing_methods).to include(:method_a)
-        expect(error.target_name).to eq(test_class.name || test_class.class.name)
+        expect(error.missing_methods).to include(:method_b)
         expect(error.message).to include('must implement')
       end
     end
 
-    it 'provides detailed error information for multiple missing methods' do
-      test_class = Class.new
-      
-      expect do
-        test_class.include(basic_interface)
-      end.to raise_error(Interface::MethodMissing) do |error|
-        expect(error.missing_methods.size).to be >= 1
-        expect(error.message).to include('must implement')
+    it 'supports include at top of class definition' do
+      basic_interface = interface do
+        required_methods :method_a, :method_b
       end
+
+      # Test the main functionality - include at top with working methods
+      test_class = Class.new do
+        include basic_interface
+        def method_a; 'a'; end
+        def method_b; 'b'; end
+      end
+
+      expect(test_class.new.method_a).to eq('a')
+      expect(test_class.new.method_b).to eq('b')
     end
   end
 

@@ -60,8 +60,100 @@ module Interface
   def append_features(mod)
     return super if mod.is_a?(Interface)
 
-    validate_interface_requirements(mod)
+    # For extend on instances or immediate validation
+    if should_validate_immediately?(mod)
+      validate_interface_requirements(mod)
+    end
     super
+  end
+
+  # Called when this interface is included in a class or module
+  #
+  # @param base [Class, Module] the class or module that included this interface
+  def included(base)
+    super
+    return if base.is_a?(Interface)
+
+    interface_module = self
+    
+    # For classes, set up method tracking to validate after all methods are defined
+    if base.is_a?(Class)
+      # Store reference to interface for later validation
+      base.instance_variable_set(:@pending_interface_validations, 
+        (base.instance_variable_get(:@pending_interface_validations) || []) + [interface_module])
+      
+      # Set up method_added callback if not already done
+      unless base.respond_to?(:interface_method_added_original)
+        base.singleton_class.alias_method(:interface_method_added_original, :method_added) if base.respond_to?(:method_added)
+        
+        base.define_singleton_method(:method_added) do |method_name|
+          # Call original method_added if it existed
+          interface_method_added_original(method_name) if respond_to?(:interface_method_added_original)
+          
+          # Check if all pending interfaces are now satisfied
+          pending = instance_variable_get(:@pending_interface_validations) || []
+          pending.each do |interface_mod|
+            if interface_mod.satisfied_by?(self)
+              # Interface is satisfied, remove from pending
+              pending.delete(interface_mod)
+            end
+          end
+          instance_variable_set(:@pending_interface_validations, pending)
+        end
+        
+        # Set up validation at class end using TracePoint
+        setup_deferred_validation(base)
+      end
+    else
+      # For modules and instances, validate immediately
+      validate_interface_requirements(base)
+    end
+  end
+
+  # Determines if we should validate immediately or defer validation
+  #
+  # @param mod [Module] the module to check
+  # @return [Boolean] true if validation should happen immediately
+  def should_validate_immediately?(mod)
+    required_method_ids = compute_required_methods
+    return true if required_method_ids.empty?
+
+    # Always validate immediately for instances (singleton classes)
+    return true if mod.singleton_class?
+
+    # Check if any required methods are already defined
+    implemented_methods = get_implemented_methods(mod)
+    (required_method_ids & implemented_methods).any?
+  rescue NoMethodError
+    # If instance_methods fails, this is likely an instance, validate immediately
+    true
+  end
+
+  # Sets up deferred validation using TracePoint to detect when class definition ends
+  #
+  # @param base [Class, Module] the class or module to validate later
+  def setup_deferred_validation(base)
+    interface_module = self
+    
+    # Use TracePoint to detect when we're done defining the class
+    trace = TracePoint.new(:end) do |tp|
+      # Check if we're ending the definition of our target class
+      if tp.self == base
+        trace.disable
+        
+        # Validate any remaining pending interfaces
+        pending = base.instance_variable_get(:@pending_interface_validations) || []
+        pending.each do |interface_mod|
+          begin
+            interface_mod.send(:validate_interface_requirements, base)
+          rescue => e
+            raise e
+          end
+        end
+      end
+    end
+    
+    trace.enable
   end
 
   # Validates that all required methods are implemented
@@ -106,7 +198,12 @@ module Interface
   # @param mod [Module] the module to check
   # @return [Array<Symbol>] implemented method names
   def get_implemented_methods(mod)
-    mod.instance_methods(true)
+    if mod.respond_to?(:instance_methods)
+      mod.instance_methods(true)
+    else
+      # For instances, get methods from their singleton class
+      mod.methods.map(&:to_sym)
+    end
   end
 
   public
