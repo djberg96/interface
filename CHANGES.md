@@ -1,3 +1,8 @@
+## 1.2.0 - 8-Jul-2025
+* Updated to use deferred method declaration validation. This means you
+  no longer have to define methods before including the interface.
+* Additional specs and example added.
+
 ## 1.1.0 - 4-May-2022
 * Switch from test-unit to rspec.
 
