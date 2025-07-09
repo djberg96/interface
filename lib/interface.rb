@@ -75,21 +75,21 @@ module Interface
     return if base.is_a?(Interface)
 
     interface_module = self
-    
+
     # For classes, set up method tracking to validate after all methods are defined
     if base.is_a?(Class)
       # Store reference to interface for later validation
-      base.instance_variable_set(:@pending_interface_validations, 
+      base.instance_variable_set(:@pending_interface_validations,
         (base.instance_variable_get(:@pending_interface_validations) || []) + [interface_module])
-      
+
       # Set up method_added callback if not already done
       unless base.respond_to?(:interface_method_added_original)
         base.singleton_class.alias_method(:interface_method_added_original, :method_added) if base.respond_to?(:method_added)
-        
+
         base.define_singleton_method(:method_added) do |method_name|
           # Call original method_added if it existed
           interface_method_added_original(method_name) if respond_to?(:interface_method_added_original)
-          
+
           # Check if all pending interfaces are now satisfied
           pending = instance_variable_get(:@pending_interface_validations) || []
           pending.each do |interface_mod|
@@ -100,7 +100,7 @@ module Interface
           end
           instance_variable_set(:@pending_interface_validations, pending)
         end
-        
+
         # Set up validation at class end using TracePoint
         setup_deferred_validation(base)
       end
@@ -134,13 +134,13 @@ module Interface
   # @param base [Class, Module] the class or module to validate later
   def setup_deferred_validation(base)
     interface_module = self
-    
+
     # Use TracePoint to detect when we're done defining the class
     trace = TracePoint.new(:end) do |tp|
       # Check if we're ending the definition of our target class
       if tp.self == base
         trace.disable
-        
+
         # Validate any remaining pending interfaces
         pending = base.instance_variable_get(:@pending_interface_validations) || []
         pending.each do |interface_mod|
@@ -152,7 +152,7 @@ module Interface
         end
       end
     end
-    
+
     trace.enable
   end
 
@@ -299,10 +299,10 @@ class Object
   # @example Usage with error
   #   # Raises an Interface::MethodMissing error because :beta is not defined.
   #   class MyClass
+  #     implements AlphaInterface
   #     def alpha
   #       # ...
   #     end
-  #     implements AlphaInterface
   #   end
   def interface(&block)
     raise ArgumentError, 'Block required for interface definition' unless block_given?
@@ -324,11 +324,11 @@ class Module
   #
   # @example
   #   class MyClass
+  #     implements MyInterface
+  #
   #     def required_method
   #       # implementation
   #     end
-  #
-  #     implements MyInterface
   #   end
   alias implements include
 end
