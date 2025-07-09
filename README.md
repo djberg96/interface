@@ -35,8 +35,8 @@ end
 ```
    
 ## General Notes
-Subinterfaces work as well. See the test_sub.rb file under the 'test'
-directory for a sample.
+Sub-interfaces work as well. See the example_sub.rb file under the 'examples'
+directory for a sample sub-interface.
 
 ## Developer's Notes
 A discussion on IRC with Mauricio Fernandez got us talking about traits.
