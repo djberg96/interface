@@ -32,7 +32,7 @@ RSpec.describe 'Interface' do
   }
 
   example "version" do
-    expect(Interface::VERSION).to eq('1.1.0')
+    expect(Interface::VERSION).to eq('1.2.0')
     expect(Interface::VERSION).to be_frozen
   end
 

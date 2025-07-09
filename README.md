@@ -1,8 +1,7 @@
 [![Ruby](https://github.com/djberg96/interface/actions/workflows/ruby.yml/badge.svg)](https://github.com/djberg96/interface/actions/workflows/ruby.yml)
 
 ## Description
-This module provides Java style interfaces for Ruby, including a somewhat
-similar syntax. This is largely a proof of concept library.
+This library provides Java style interfaces for Ruby.
 
 ## Installation
 `gem install interface`
@@ -14,12 +13,14 @@ similar syntax. This is largely a proof of concept library.
 ```ruby
 require 'interface'
 
-MyInterface = interface{
+MyInterface = interface do
   required_methods :foo, :bar, :baz
-}
+end
 
 # Raises an error until 'baz' is defined
 class MyClass
+  implements MyInterface
+
   def foo
     puts "foo"
   end
@@ -28,7 +29,8 @@ class MyClass
     puts "bar"
   end
 
-  implements MyInterface
+  # Uncomment to work
+  # def baz; end
 end
 ```
    
@@ -58,17 +60,23 @@ I should note that, although I am listed as the author, this was mostly the
 combined work of David Naseby and Mauricio Fernandez. I just happened to be
 the guy that put it all together.
 
+In more recent versions this code was enhanced with the help of AI.
+Specifically, it was updated to use the TracePoint interface so that an
+interface could be declared at the top of the class, with the method
+validations deferred.
+
 ## Acknowledgements
 This module was largely inspired and somewhat copied from a post by
 David Naseby (see URL above). It was subsequently modified almost entirely
-by Mauricio Fernandez through a series of discussions on IRC.
+by Mauricio Fernandez through a series of discussions on IRC, and later
+by evil AI bots that will eventually kill us all.
 
 ## See Also
 The Crystal programming language, which has syntax very similar to Ruby's,
 effectively implements interfaces via the `abstract` keyword.
 	
 ## Copyright
-(C) 2004-2023 Daniel J. Berger
+(C) 2004-2025 Daniel J. Berger
 All rights reserved.
 	
 ## Warranty

@@ -5,16 +5,16 @@
 # run this example via the 'rake example:interface' task. Modify this
 # code as you see fit.
 #######################################################################
-require 'interface'
+require_relative '../lib/interface'
 
 MyInterface = interface{
   required_methods :foo, :bar
 }
 
 class MyClass
+  include MyInterface
   def foo; end
   def bar; end
-  include MyInterface
 end
 
 =begin

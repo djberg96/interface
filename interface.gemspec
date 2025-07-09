@@ -2,14 +2,14 @@ require 'rubygems'
 
 Gem::Specification.new do |spec|
   spec.name       = 'interface'
-  spec.version    = '1.1.0'
+  spec.version    = '1.2.0'
   spec.author     = 'Daniel J. Berger'
   spec.license    = 'Artistic-2.0'
   spec.email      = 'djberg96@gmail.com'
   spec.homepage   = 'http://github.com/djberg96/interface'
   spec.summary    = 'Java style interfaces for Ruby'
   spec.test_file  = 'spec/interface_spec.rb'
-  spec.files      = Dir['**/*'].reject{ |f| f.include?('git') }
+  spec.files      = Dir['**/*'].reject{ |f| f.include?('git') || f.include?('misc') }
   spec.cert_chain = Dir['certs/*']
 
   spec.add_development_dependency('rake')
