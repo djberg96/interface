@@ -61,7 +61,7 @@ combined work of David Naseby and Mauricio Fernandez. I just happened to be
 the guy that put it all together.
 
 In more recent versions this code was enhanced with the help of AI.
-Specifically, it was updated to use the TracePoint interface so that an
+Specifically, it was updated to use the TracePoint class so that an
 interface could be declared at the top of the class, with the method
 validations deferred.
 
